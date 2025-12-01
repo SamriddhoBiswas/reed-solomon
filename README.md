@@ -30,6 +30,9 @@ Implements the full decode pipeline:
 The decoder fully reconstructs the original codeword as long as errors ≤ correction capability.
 
 ---
+
+## 📂 Project Structure
+```
 reed-solomon/
 │
 ├── rs_codec/
@@ -51,6 +54,8 @@ reed-solomon/
 ├── README.md                     # Project documentation
 ├── .gitattributes                # Git attributes handling
 └── .gitignore                    # Files/directories ignored by Git
+
+```
 
 
 Overview
