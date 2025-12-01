@@ -1,7 +1,7 @@
 
-# Reed–Solomon Code (Python)
+<h1 align="center">Reed Solomon Code <br> Implementation using Python</h1>
 
-This project implements a Reed–Solomon encoder/decoder and supporting finite-field utilities in pure Python, including a Berlekamp–Massey + Forney implementation for error/erasure correction.
+This project implements a Reed–Solomon encoder/decoder from scratch using **finite field GF(256)** arithmetic, including a Berlekamp–Massey + Chien Search + Forney implementation for error/erasure correction.
 
 ---
 
@@ -37,19 +37,16 @@ reed-solomon/
 │
 ├── rs_codec/
 │   │
-│   ├── __pycache__/              # Python bytecode cache
-│   │
 │   ├── __init__.py               # Makes rs_codec a Python package
 │   ├── encoder.py                # High-level encoder wrapper
 │   ├── generator.py              # Generator polynomial construction
 │   ├── gf.py                     # GF(256) finite field implementation
 │   ├── poly.py                   # Polynomial helper utilities
-│   │
-│   ├── rs_encoder.py             # Full RS encoding logic (uses gf & poly)
-│   ├── rs_bm_forney.py           # Decoding: BM, Chien, Forney algorithms
-│   │
-│   ├── test_encode.py            # Tests the encoding process
-│   └── test_full_cycle_bm.py     # Full encode → corrupt → decode test
+│
+├── rs_encoder.py                 # Full RS encoding logic (uses gf & poly) 
+├── rs_bm_forney.py               # Decoding: BM, Chien, Forney algorithms
+├── test_encode.py                # Tests the encoding process
+├── test_full_cycle_bm.py         # Full encode → corrupt → decode test
 │
 ├── README.md                     # Project documentation
 ├── .gitattributes                # Git attributes handling
@@ -58,15 +55,9 @@ reed-solomon/
 ```
 
 
-Overview
-- Implements Reed–Solomon encoding and decoding primitives over GF(2^m).
-- Implements polynomial utilities and generator polynomial computation.
-- Includes a Berlekamp–Massey solver and Forney algorithm for decoding (see [rs_bm_forney.py](rs_bm_forney.py)).
-- Contains unit tests to validate encoding and full encode/decode cycles.
-
-Reed–Solomon basics
+## 📘 Overview
 - A Reed–Solomon code is commonly described by parameters $(n,k)$ with $t = \frac{n-k}{2}$ the error-correcting capability.
-- Over GF$(2^m)$, codeword length satisfies:
+- Over GF(2<sup>m</sup>), codeword length satisfies:
 $$
 n \le 2^m - 1
 $$
@@ -75,46 +66,42 @@ $$
 g(x)=\prod_{i=0}^{2t-1} (x - \alpha^{i})
 $$
 
-Usage
-- Run the encoder directly or import the encoder module:
+## 🧮 Finite Field (GF256) Implementation
 
-```python
-# example usage (place in a script or REPL)
-from rs_encoder import encode  # or use rs_codec.encoder
+- Field polynomial: **0x11D**
+- Primitive element: α = 2  
+- exp/log tables for O(1) GF multiplication  
+- Addition/subtraction implemented as XOR  
 
-msg = [32, 45, 12, 255]  # example message symbols (0..255 for GF(2^8))
-codeword = encode(msg)
-print(codeword)
+This matches standard Reed–Solomon implementations used in:
+- CDs/DVDs  
+- QR codes  
+- Digital TV (DVB)  
+- Satellite communication  
+
+---
+
+## 🚀 Example: Full Encode → Corrupt → Decode Cycle
+
+Run:
+
+```bash
+python3 test_full_cycle_bm.py
 ```
 
-Testing
-- Run tests with pytest:
+## 🤝 Contributing
 
-```sh
-pytest -q
-# or run specific tests
-pytest test_encode.py -q
-pytest test_full_cycle_bm.py -q
-```
+Contributions are welcome! Fork this repo and submit a pull request.
 
-Project structure
-- [rs_codec/gf.py](rs_codec/gf.py) — finite field arithmetic (addition, multiplication, log/antilog tables).
-- [rs_codec/poly.py](rs_codec/poly.py) — polynomial operations (add, mul, eval, scale).
-- [rs_codec/generator.py](rs_codec/generator.py) — generator polynomial construction.
-- [rs_codec/encoder.py](rs_codec/encoder.py) and [rs_encoder.py](rs_encoder.py) — public encoder interfaces.
-- [rs_bm_forney.py](rs_bm_forney.py) — Berlekamp–Massey solver + Forney algorithm for decoding and error/erasure location/value computation.
-- Tests: [test_encode.py](test_encode.py), [test_full_cycle_bm.py](test_full_cycle_bm.py)
+---
 
-Contributing
-- Open an issue for bugs or feature requests.
-- Preferred workflow: fork → branch → PR with tests.
+## 🛠 Requirements
 
-License
-- Add an appropriate license file (e.g., MIT) if you plan to release publicly.
+- Python 3.8+
+- No external libraries required — pure Python implementation.
 
-Notes
-- This README intentionally avoids committing to particular API symbol names — refer to the modules listed above for the exact function/class names.
-- For algorithmic details, see standard references on Reed–Solomon, Berlekamp–Massey, and Forney algorithms.
+---
 
 
-// ...existing code...
+
+
