@@ -58,13 +58,19 @@ reed-solomon/
 ## 📘 Overview
 - A Reed–Solomon code is commonly described by parameters $(n,k)$ with $t = \frac{n-k}{2}$ the error-correcting capability.
 - Over GF(2<sup>m</sup>), codeword length satisfies:
-$$
-n \le 2^m - 1
-$$
+<div align="center">
+
+$ n \le 2^m - 1 $
+
+</div>
+
 - Generator polynomial (conceptual):
-$$
-g(x)=\prod_{i=0}^{2t-1} (x - \alpha^{i})
-$$
+
+<div align="center">
+
+$ g(x) = \prod_{i=0}^{2t-1} (x - \alpha^i) $
+
+</div>
 
 ## 🧮 Finite Field (GF256) Implementation
 
