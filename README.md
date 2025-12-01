@@ -30,29 +30,27 @@ Implements the full decode pipeline:
 The decoder fully reconstructs the original codeword as long as errors ≤ correction capability.
 
 ---
-
 reed-solomon/
 │
 ├── rs_codec/
 │   │
-│   ├── __pycache__/               # Python bytecode cache
+│   ├── __pycache__/              # Python bytecode cache
 │   │
-│   ├── __init__.py                # Makes rs_codec a Python package
+│   ├── __init__.py               # Makes rs_codec a Python package
+│   ├── encoder.py                # High-level encoder wrapper
+│   ├── generator.py              # Generator polynomial construction
+│   ├── gf.py                     # GF(256) finite field implementation
+│   ├── poly.py                   # Polynomial helper utilities
 │   │
-│   ├── encoder.py                 # High-level encoder wrapper
-│   ├── generator.py               # Generator polynomial construction
-│   ├── gf.py                      # GF(256) finite field implementation
-│   ├── poly.py                    # Polynomial helper utilities
+│   ├── rs_encoder.py             # Full RS encoding logic (uses gf & poly)
+│   ├── rs_bm_forney.py           # Decoding: BM, Chien, Forney algorithms
 │   │
-│   ├── rs_encoder.py              # Full RS encoding logic (uses gf & poly)
-│   ├── rs_bm_forney.py            # Decoding: BM, Chien, Forney algorithms
-│   │
-│   ├── test_encode.py             # Tests the encoding process
-│   └── test_full_cycle_bm.py      # Full encode → corrupt → decode test
+│   ├── test_encode.py            # Tests the encoding process
+│   └── test_full_cycle_bm.py     # Full encode → corrupt → decode test
 │
-├── README.md                      # Project documentation
-├── .gitattributes                 # Git attributes handling
-└── .gitignore                     # Files/directories ignored by Git
+├── README.md                     # Project documentation
+├── .gitattributes                # Git attributes handling
+└── .gitignore                    # Files/directories ignored by Git
 
 
 Overview
