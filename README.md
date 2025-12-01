@@ -63,7 +63,7 @@ reed-solomon/
 </div>
 - Generator polynomial (conceptual):
 <div align="center">
-g(x) = &prod;<sub>i=0</sub><sup>2t−1</sup> (x − &alpha;<sup>i</sup>)
+<b> g(x) = &prod;<sub>i=0</sub><sup>2t−1</sup> (x − &alpha;<sup>i</sup>) </b>
 </div>
 
 ## 🧮 Finite Field (GF256) Implementation
