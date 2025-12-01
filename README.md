@@ -31,17 +31,29 @@ The decoder fully reconstructs the original codeword as long as errors ≤ corre
 
 ---
 
-Key files:
-- [rs_bm_forney.py](rs_bm_forney.py)
-- [rs_encoder.py](rs_encoder.py)
-- [test_encode.py](test_encode.py)
-- [test_full_cycle_bm.py](test_full_cycle_bm.py)
-- [rs_codec/__init__.py](rs_codec/__init__.py)
-- [rs_codec/encoder.py](rs_codec/encoder.py)
-- [rs_codec/generator.py](rs_codec/generator.py)
-- [rs_codec/gf.py](rs_codec/gf.py)
-- [rs_codec/poly.py](rs_codec/poly.py)
-- [rs_codec/__pycache__/](rs_codec/__pycache__/)
+reed-solomon/
+│
+├── rs_codec/
+│   │
+│   ├── __pycache__/               # Python bytecode cache
+│   │
+│   ├── __init__.py                # Makes rs_codec a Python package
+│   │
+│   ├── encoder.py                 # High-level encoder wrapper
+│   ├── generator.py               # Generator polynomial construction
+│   ├── gf.py                      # GF(256) finite field implementation
+│   ├── poly.py                    # Polynomial helper utilities
+│   │
+│   ├── rs_encoder.py              # Full RS encoding logic (uses gf & poly)
+│   ├── rs_bm_forney.py            # Decoding: BM, Chien, Forney algorithms
+│   │
+│   ├── test_encode.py             # Tests the encoding process
+│   └── test_full_cycle_bm.py      # Full encode → corrupt → decode test
+│
+├── README.md                      # Project documentation
+├── .gitattributes                 # Git attributes handling
+└── .gitignore                     # Files/directories ignored by Git
+
 
 Overview
 - Implements Reed–Solomon encoding and decoding primitives over GF(2^m).
