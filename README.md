@@ -15,16 +15,16 @@ This project implements a Reed–Solomon encoder/decoder from scratch using **fi
 ### ✔ Reed–Solomon Decoder (Classical Algebraic Method)
 Implements the full decode pipeline:
 
-1. **Syndrome Computation**  
+-  **Syndrome Computation**  
    Evaluates the received polynomial at successive powers of the primitive element α.
 
-2. **Berlekamp–Massey Algorithm**  
+-  **Berlekamp–Massey Algorithm**  
    Produces the error locator polynomial by fitting the syndrome sequence.
 
-3. **Chien Search**  
+-  **Chien Search**  
    Efficient root-finding over GF(256) to determine exact error positions.
 
-4. **Forney Algorithm**  
+- **Forney Algorithm**  
    Computes error magnitudes using the evaluator polynomial and the derivative of the locator polynomial.
 
 The decoder fully reconstructs the original codeword as long as errors ≤ correction capability.
