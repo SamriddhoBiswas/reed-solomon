@@ -86,7 +86,7 @@ This matches standard Reed–Solomon implementations used in:
 Run:
 
 ```bash
-python test_full_cycle_bm.py
+python3 test_full_cycle_bm.py
 ```
 
 ## 🤝 Contributing
